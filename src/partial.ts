@@ -1,7 +1,7 @@
 import type { Eq, First, Second } from './prelude.js'
 
 export function partial<T extends Record<any, Eq<any, any>>>(eqs: T) {
-  return function (a: { [k in keyof T]: First<T[k]> }, b: { [k in keyof T]?: Second<T[k]> }) {
+  const f = function (a: { [k in keyof T]: First<T[k]> }, b: { [k in keyof T]?: Second<T[k]> }) {
     for (const k in eqs) {
       if (b[k] === undefined) {
         continue
@@ -12,4 +12,6 @@ export function partial<T extends Record<any, Eq<any, any>>>(eqs: T) {
     }
     return true
   }
+  f.arg = eqs
+  return f
 }
