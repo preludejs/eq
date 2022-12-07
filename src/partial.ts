@@ -9,7 +9,7 @@ export function partial<T extends Record<string, Eq<any, any>>>(eqs: T) {
       if (b[k] === undefined) {
         continue
       }
-      if (!eqs[k]((a as unknown as { [k in keyof T]: First<T[k]> })[k], b[k])) {
+      if (!eqs[k]((a as any)[k], b[k])) {
         return false
       }
     }
