@@ -6,7 +6,7 @@ function object_<T extends Record<string, Eq<any, any>>>(eqs: T) {
     b: OptionalIfUndefined<{ [k in keyof T]: Second<T[k]> }>)
    {
     for (const k in eqs) {
-      if (!eqs[k]((a as any)[k], (b as any)[k])) {
+      if (!eqs[k]((a as unknown as { [k in keyof T]: First<T[k]> })[k], (b as unknown as { [k in keyof T]: Second<T[k]> })[k])) {
         return false
       }
     }
