@@ -1,6 +1,6 @@
 import type { Eq } from './prelude.js'
 
-export function undefinedOr<T, U>(eq: Eq<T, U>) {
+export function undefinedOr<T, U = T>(eq: Eq<T, U>) {
   return function (a: undefined | T, b: undefined | U) {
     return (
       a === undefined ?

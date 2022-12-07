@@ -26,3 +26,10 @@ export type IntersectionOfUnion<T> =
   (T extends unknown ? (_: T) => unknown : never) extends (_: infer R) => unknown ?
     R :
     never
+
+export type OptionalIfUndefinedOnly<T> = {
+  [K in keyof T as undefined extends T[K] ? K : never]?: T[K]
+}
+
+export type OptionalIfUndefined<T> =
+  Omit<T, keyof OptionalIfUndefinedOnly<T>> & OptionalIfUndefinedOnly<T>
