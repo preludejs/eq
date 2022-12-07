@@ -25,6 +25,6 @@ preversion: test rebuild
 postversion:
 	git push
 	git push --tags
-	pnpm publish
+	pnpm publish --access public
 
 .PHONY: test
