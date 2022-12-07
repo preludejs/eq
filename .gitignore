@@ -1,0 +1,8 @@
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/targets.log
+*.js
+cjs
+mjs
+node_modules
+src/wip
